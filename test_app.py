@@ -10,15 +10,15 @@ def test_get_stocks():
     response = client.get("/stocks")
     assert response.status_code == 200
 def test_update_stock():
-    client.post("/stocks", json={"ticker": "AAPL", "shares": 10})
-    response = client.put("/stocks/AAPL", json={"shares": 25})
+    client.post("/stocks", json={"ticker": "MSFT", "shares": 10})
+    response = client.put("/stocks/MSFT", json={"shares": 25})
     assert response.status_code == 200
 
 def test_delete_stock():
-
-    client.post("/stocks", json={"ticker": "AAPL", "shares": 10})
-
-    response = client.delete("/stocks/AAPL")
+    client.post("/stocks", json={"ticker": "TSLA", "shares": 10})
+    response = client.delete("/stocks/TSLA")
+    assert response.status_code == 200
+    assert response.json()["message"] == "Removed TSLA from portfolio"
 
     assert response.status_code == 200
     assert response.json()["message"] == "Removed AAPL from portfolio"
