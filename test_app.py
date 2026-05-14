@@ -19,6 +19,3 @@ def test_delete_stock():
     response = client.delete("/stocks/TSLA")
     assert response.status_code == 200
     assert response.json()["message"] == "Removed TSLA from portfolio"
-
-    assert response.status_code == 200
-    assert response.json()["message"] == "Removed AAPL from portfolio"
